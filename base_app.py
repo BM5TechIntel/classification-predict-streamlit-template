@@ -35,12 +35,12 @@ import matplotlib.pyplot as plt
 # For background image
 import base64
 
-#st.set_page_config(page_title="TechIntel Tweet Classifier App")
+#st.set_page_config(page_title="TwitIntel")
 from PIL import Image
 # Loading Image using PIL
-pic = Image.open('resources/TechIntelCrop.png')
+pic = Image.open('resources/twitintel.jpeg')
 # Adding Image to web app
-st.set_page_config(page_title="TechIntel Tweet Classifier App", page_icon = pic)
+st.set_page_config(page_title="TwitIntel", page_icon = pic)
 
 hide_default_format = """
        <style>
@@ -105,7 +105,7 @@ def main():
 	add_bg_from_local('resources/TechIntelCrop_o30.png')
 	# Creates a main title and subheader on your page -
 	# these are static across all pages
-	st.title("TechIntel Tweet Classifier")
+	st.title("TwitIntel")
 
 	st.subheader("Climate Change Tweet Sentiment Classifier")
 	realtime_update = st.sidebar.checkbox(label="Update in Real Time", value=True)
@@ -224,6 +224,7 @@ and informing decision-making processes related to climate change awareness and 
 
 	if selection == "Statistics":
 		# Adding wordclouds
+
 		st.info("A word cloud generated from the tweets of people who don't believe in climate change")
 		st.image('resources/wc_no.png')
 
