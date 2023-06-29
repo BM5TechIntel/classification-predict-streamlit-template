@@ -31,6 +31,7 @@ import string
 
 # Pretty graphs
 import matplotlib.pyplot as plt
+import seaborn as sns
 
 # For background image
 import base64
@@ -234,6 +235,35 @@ and informing decision-making processes related to climate change awareness and 
 		expand.image('resources/ml_train.png')
 
 	if selection == "Statistics":
+# Create a multiselect widget for category selection
+		df["sentiment"] = df["sentiment"].replace([-1], 3)
+		label_map = {0: 'Neutral', 1: 'Belief', 2: 'News', 3: 'Anti'}
+		df['sentiment'] = df['sentiment'].map(label_map)
+		selected_categories = st.multiselect('Select Categories', df['sentiment'].unique())
+		# Create a dropdown to select data
+			
+# Filter the DataFrame based on selected categories
+		filtered_df = df[df['sentiment'].isin(selected_categories)]
+
+# Create the count plot using the filtered data
+		plt.figure(figsize=(10, 6))
+# Check if any data is selected
+		if selected_categories:
+    # Generate the count plot for the selected data
+			sns.countplot(data=filtered_df, x='sentiment', order=selected_categories)
+			#fig, ax = plt.subplots()
+			#ax.scatter()
+			st.pyplot()
+		else:
+			st.write('No data selected')
+			st.set_option('deprecation.showPyplotGlobalUse', False)
+# Display the plot in Streamlit
+		#st.pyplot(plt.gcf())
+# fig, ax = plt.subplots()
+# ax.scatter([1, 2, 3], [1, 2, 3])
+#    ... other plotting actions ...
+# st.pyplot(fig)
+
 		# Adding wordclouds
 		st.info("A word cloud generated from the tweets of people who don't believe in climate change")
 		st.image('resources/wc_no.png')
