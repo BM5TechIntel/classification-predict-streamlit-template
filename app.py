@@ -43,7 +43,7 @@ import json
 #st.set_page_config(page_title="TechIntel Tweet Classifier App")
 from PIL import Image
 # Loading Image using PIL
-pic = Image.open('resources/twitIntel.png')
+pic = Image.open('resources/twitintel.png')
 # Adding Image to web app
 st.set_page_config(page_title="TwitIntel", page_icon = pic)
 
