@@ -120,7 +120,7 @@ def main():
 	# Creating sidebar with selection box -
 	# you can create multiple pages this way
 
-	options = ["Classifier", "How does it work?", "Statistics", "About TechIntel", "FAQs", "Feedback"]
+	options = ["Classifier", "How does it work?", "Exploratory data analysis", "About TechIntel", "FAQs", "Feedback"]
 
 	selection = st.sidebar.selectbox("Choose Page", options)
 
