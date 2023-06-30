@@ -128,8 +128,8 @@ def main():
 
 	if selection == "Classifier":
 		st.info("Prediction with ML Models")
+		st.image('resources/frontpage.png')
 		model_name = st.selectbox('Select Model', ('SVC Model', 'BNB Model', 'LR Model'))
-
 		# Creating a text box for user input
 		tweet_text = st.text_area("Enter tweet here")
 
@@ -277,19 +277,19 @@ and informing decision-making processes related to climate change awareness and 
 	
 
 		# Creating a pie chart
-		#st.info("A pie chart showing the proportions of different sentiments")
+		st.info("A pie chart showing the proportions of different sentiments")
 
-		#mylabels = ["Neutral", "Belief", "News", "Anti"] # labels
-		#mycolors = ["deepskyblue", "dodgerblue", "Blue", "darkblue"] # custom colours
+		mylabels = ["Neutral", "Belief", "News", "Anti"] # labels
+		mycolors = ["deepskyblue", "dodgerblue", "Blue", "darkblue"] # custom colours
 
 		# pie chart can only have positive numbers, so changing -1 to 3
-		#df["sentiment"] = df["sentiment"].replace([-1], 3)
+		df["sentiment"] = df["sentiment"].replace([-1], 3)
 		# group the data
-		#sentiment_counts = df.groupby(['sentiment']).size() 
+		sentiment_counts = df.groupby(['sentiment']).size() 
 		# make the pie chart
-		#fig, ax = plt.subplots()
-		#ax.pie(sentiment_counts, labels = mylabels, colors = mycolors)
-		#st.pyplot(fig) # show the pie chart
+		fig, ax = plt.subplots()
+		ax.pie(sentiment_counts, labels = mylabels, colors = mycolors)
+		st.pyplot(fig) # show the pie chart
 	
 	if selection == "About TechIntel":
 		# You can read a markdown file from supporting resources folder
