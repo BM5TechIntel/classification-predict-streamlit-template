@@ -128,7 +128,7 @@ def main():
 
 	if selection == "Classifier":
 		st.info("Prediction with ML Models")
-		model_name = st.selectbox('Select Model', ('SVC Model', 'BNB Model'))
+		model_name = st.selectbox('Select Model', ('SVC Model', 'BNB Model', 'LR Model'))
 
 		# Creating a text box for user input
 		tweet_text = st.text_area("Enter tweet here")
@@ -155,6 +155,9 @@ def main():
 				prediction = predictor.predict(vect_text)
 			elif model_name == 'BNB Model':
 				predictor = joblib.load(open(os.path.join("resources/Bern.pkl"),"rb"))
+				prediction = predictor.predict(vect_text)
+			elif model_name == 'LR Model':
+				predictor = joblib.load(open(os.path.join("resources/LR.pkl"),"rb"))
 				prediction = predictor.predict(vect_text)
 			
 			# When model has successfully run, will print prediction
@@ -184,7 +187,8 @@ def main():
 
 		expander = st.expander("See here for more info")
 		expander.write("TechIntel Tweet Classifier app is a powerful tool that helps organizations gain insights into public opinion about climate change. \
-		By analyzing tweets from given datasets, several models were trained and they're able to make adequate predictions when it given unknown data. \
+		By analyzing tweets from given datasets, three models were trained - the Support Vector Classifier, the Bernoulli Naive Bayes and the Logistic Regression model \
+		and they're able to make adequate predictions when given unknown data. \
 		With this app, valuable information that can inform decision-making, shape marketing strategies, \
 		and contribute to the development of sustainable practices is made easily available.")
 
@@ -252,7 +256,7 @@ and informing decision-making processes related to climate change awareness and 
     # Generate the count plot for the selected data
 			sns.countplot(data=filtered_df, x='sentiment', order=selected_categories)
 			#fig, ax = plt.subplots()
-			#ax.scatter()
+			#ax.scatter(data=filtered_df, x='sentiment', order=selected_categories)
 			st.pyplot()
 		else:
 			st.write('No data selected')
@@ -273,19 +277,19 @@ and informing decision-making processes related to climate change awareness and 
 	
 
 		# Creating a pie chart
-		st.info("A pie chart showing the proportions of different sentiments")
+		#st.info("A pie chart showing the proportions of different sentiments")
 
-		mylabels = ["Neutral", "Belief", "News", "Anti"] # labels
-		mycolors = ["deepskyblue", "dodgerblue", "Blue", "darkblue"] # custom colours
+		#mylabels = ["Neutral", "Belief", "News", "Anti"] # labels
+		#mycolors = ["deepskyblue", "dodgerblue", "Blue", "darkblue"] # custom colours
 
 		# pie chart can only have positive numbers, so changing -1 to 3
-		df["sentiment"] = df["sentiment"].replace([-1], 3)
+		#df["sentiment"] = df["sentiment"].replace([-1], 3)
 		# group the data
-		sentiment_counts = df.groupby(['sentiment']).size() 
+		#sentiment_counts = df.groupby(['sentiment']).size() 
 		# make the pie chart
-		fig, ax = plt.subplots()
-		ax.pie(sentiment_counts, labels = mylabels, colors = mycolors)
-		st.pyplot(fig) # show the pie chart
+		#fig, ax = plt.subplots()
+		#ax.pie(sentiment_counts, labels = mylabels, colors = mycolors)
+		#st.pyplot(fig) # show the pie chart
 	
 	if selection == "About TechIntel":
 		# You can read a markdown file from supporting resources folder
