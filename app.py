@@ -238,7 +238,7 @@ and informing decision-making processes related to climate change awareness and 
 
 		expand.image('resources/ml_train.png')
 
-	if selection == "Statistics":
+	if selection == "Exploratory data analysis":
 # Create a multiselect widget for category selection
 		df["sentiment"] = df["sentiment"].replace([-1], 3)
 		label_map = {0: 'Neutral', 1: 'Belief', 2: 'News', 3: 'Anti'}
